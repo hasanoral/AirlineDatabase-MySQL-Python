@@ -1,0 +1,31 @@
+INSERT INTO customer VALUES ('378520','Uncubozköy/Manisa','Uganda','willetteclem@gmail.com','05509923482');
+UPDATE CUSTOMER
+SET Phone=5332789218
+WHERE customer.E_mail="cafeege35@gmail.com";
+DELETE FROM customer WHERE customer.Country='Uganda' AND customer.Passaport_no='378520';
+
+
+INSERT INTO fare VALUES ('I34B7','Y','350','required to wear masks');
+Update FARE
+SET    Amount=Amount*1.20
+WHERE    Flight_Number='AB60K';
+DELETE FROM fare WHERE fare.Flight_Number='W39S5';
+
+INSERT INTO flight VALUES ('YT652','20','Pazartesi');
+Update FLIGHT
+SET  Weekdays="Çarşamba"
+WHERE    Flight_number='YT652';
+DELETE FROM flight WHERE flight.Flight_number='YT652';
+
+INSERT INTO flight_leg VALUES ('NR73A','3','447','BDM','15:45','SAT','17:15');
+Update FLIGHT_LEG
+SET Scheduled_departure_time=DATE_ADD(Scheduled_departure_time,INTERVAL 60 MINUTE)
+      , Scheduled_arrival_time=DATE_ADD(Scheduled_arrival_time,INTERVAL 60 MINUTE)
+WHERE Flight_Number= 'NR73A' AND Leg_Number=3;
+DELETE FROM flight_leg WHERE flight_leg.Flight_Number='NR73A' AND flight_leg.Leg_Number=3 ;
+
+INSERT INTO airplane_type VALUES ('MİG 21','200','MİG Comp.');
+UPDATE AIRPLANE_TYPE
+SET Max_seats=70
+WHERE Airplane_type_name="Douglas DC-2";
+DELETE FROM Airplane_type WHERE airplane_type.Manufacturer_company='MİG Comp.';

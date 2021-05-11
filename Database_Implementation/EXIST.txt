@@ -1,0 +1,24 @@
+-- Total_number_of_seats'i 130 dan buyuk olan ucaklar
+SELECT *
+FROM airplane_type
+WHERE EXISTS (SELECT *
+                FROM AIRPLANE
+                WHERE airplane_type.Airplane_type_name=AIRPLANE.Airplane_type
+                AND    Total_number_of_seats >130
+                );
+
+SELECT *
+FROM flight_leg
+WHERE NOT EXISTS (SELECT *
+                FROM leg_instance
+                WHERE leg_instance.Arrival_time > '00:00' 
+                AND flight_leg.Scheduled_arrival_time = leg_instance.Arrival_time);
+
+-- Leg_instance ve flight_numberın leg_numberlarının eşit olmadığı ve milin 200 den az olduğu durumları yazdırır.
+SELECT *
+FROM flight_leg
+WHERE NOT EXISTS (SELECT *
+                FROM leg_instance
+                WHERE flight_leg.Leg_Number=flight_leg.Leg_Number
+                AND Mileage >200
+                );

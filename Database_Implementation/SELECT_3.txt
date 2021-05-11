@@ -1,0 +1,36 @@
+-- min3 (3) leg_instance bilgileri verilen uçuçtaki yolcuların mail adresleri
+-- SELECT customer.E_mail
+-- FROM customer, seat, leg_instance
+-- WHERE 
+-- seat.Passaport_no = customer.Passaport_no
+-- AND seat.Date = leg_instance.Date
+-- AND seat.Leg_Number = leg_instance.Leg_Number
+-- AND seat.Flight_Number = leg_instance.Flight_Number
+-- AND leg_instance.Flight_Number = 'I34B7'
+-- AND leg_instance.Leg_Number = '1'
+-- AND leg_instance.Date = '2020-10-10';
+
+-- min3 (3) 428 milden fazla sürecek uçuşların kalkış havalimanları
+-- SELECT flight.Flight_number AS uçuş, flight_leg.Mileage AS Mesafe, airport.Name AS Kalkış
+-- FROM flight, flight_leg, airport
+-- WHERE 
+-- flight.Flight_number = flight_leg.Flight_Number
+-- AND flight_leg.Departure_airport_code = airport.Airport_code
+-- AND flight_leg.Mileage > '428';
+
+-- min3 (3) TABLOLU Uçak tiplerinin canland toplam airport
+-- SELECT airplane_type.airplane_type_name AS Uçak_Tipi, COUNT(*) AS İniş_yapılabilen_havalimanı
+-- FROM airport, can_land, airplane_type
+-- WHERE 
+-- airplane_type.airplane_type_name=can_land.Airplane_type_name
+-- AND can_land.Airport_code=airport.Airport_code
+-- GROUP BY airplane_type.Airplane_type_name
+-- ORDER BY COUNT(*) DESC;
+
+-- min3 (4) Şirketlerin sahip olduğu uçaklar
+-- SELECT company.Company_id AS Şirket, airplane.Airplane_type AS Uçaklar
+-- FROM company, owns, property, airplane
+-- WHERE
+-- company.Company_id = owns.Company_id
+-- AND owns.Property_id = property.Property_id
+-- AND property.Property_id = airplane.Property_id;

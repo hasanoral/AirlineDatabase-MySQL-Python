@@ -1,0 +1,65 @@
+DELIMITER //
+CREATE TRIGGER amount_control
+BEFORE INSERT
+ON fare
+FOR EACH ROW
+IF NEW.amount<0 THEN
+SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Sale has exceeded the allowed amount of lower than 0.';
+END IF//
+DELIMITER ;
+
+-- ÖRNEK INSERT
+INSERT INTO Fare VALUES ('W39S5','J','-6','required to wear masks');
+
+
+
+DELIMITER //
+CREATE TRIGGER mileage_control
+BEFORE INSERT
+ON flight_leg
+FOR EACH ROW
+IF NEW.mileage<0 THEN
+SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Mileage has exceeded the allowed amount of lower than 0.';
+END IF//
+DELIMITER ;
+
+-- örnek insert
+INSERT INTO flight_leg VALUES('NR73A','3','-400','AYT','20:00','BLA','22:30');
+
+DELIMITER //
+CREATE TRIGGER max_seat_control
+BEFORE INSERT
+ON airplane_type
+FOR EACH ROW
+IF NEW.Max_seats<0 THEN
+SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'Max_seat has exceeded the allowed amount of lower than 0.';
+END IF//
+DELIMITER ;
+
+-- örnek insert 
+INSERT INTO Airplane_type VALUES ('Airbus B220','-65','Airbus Comp.');
+
+-- deneme 9 * 
+-- KONTROL ET
+DELIMITER $$
+CREATE TRIGGER TRG_decrease_available_seats
+AFTER INSERT ON seat 
+
+FOR EACH ROW
+BEGIN
+    UPDATE  LEG_INSTANCE
+    SET     Number_of_available_seats = Number_of_available_seats - 1
+    WHERE LEG_INSTANCE.Flight_Number IN
+      (SELECT Flight_Number FROM seat)
+    AND LEG_INSTANCE.Leg_Number IN
+      (SELECT Leg_Number FROM seat)
+    AND LEG_INSTANCE.Date IN
+      (SELECT Date FROM seat);
+END $$
+DELIMITER ;
+
+--örnek kod
+INSERT INTO Seat VALUES ('083','33','963258','D753S','1','2021-1-25');

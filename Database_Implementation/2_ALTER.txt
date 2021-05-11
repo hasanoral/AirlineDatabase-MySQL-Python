@@ -1,0 +1,41 @@
+ALTER TABLE Airplane
+ADD FOREIGN KEY (Airplane_type) REFERENCES Airplane_type(Airplane_type_name);
+
+ALTER TABLE Flight
+ADD FOREIGN KEY (Airline_id) REFERENCES Airline(Property_id);
+
+ALTER TABLE Fare
+ADD FOREIGN KEY (Flight_number) REFERENCES Flight(Flight_number);
+
+ALTER TABLE Flight_leg
+ADD FOREIGN KEY (Flight_number) REFERENCES Flight(Flight_number),
+ADD FOREIGN KEY (Departure_airport_code) REFERENCES Airport(Airport_code),
+ADD FOREIGN KEY (Arrival_airport_code) REFERENCES Airport(Airport_code);
+
+ALTER TABLE Leg_instance
+ADD FOREIGN KEY (Flight_number) REFERENCES Flight(Flight_number),
+ADD FOREIGN KEY (Leg_number) REFERENCES Flight_leg(Leg_number),
+ADD FOREIGN KEY (Airplane_id) REFERENCES Airplane(Property_id),
+ADD FOREIGN KEY (Departure_airport_code) REFERENCES Airport(Airport_code),
+ADD FOREIGN KEY (Arrival_airport_code) REFERENCES Airport(Airport_code);
+
+ALTER TABLE Seat
+ADD FOREIGN KEY (Flight_number) REFERENCES Flight(Flight_number),
+ADD FOREIGN KEY (Passaport_no) REFERENCES Customer(Passaport_no),
+ADD FOREIGN KEY (Leg_number) REFERENCES Flight_leg(Leg_number),
+ADD FOREIGN KEY (Date) REFERENCES Leg_instance(Date);
+
+ALTER TABLE Can_land
+ADD FOREIGN KEY (Airplane_type_name) REFERENCES Airplane_type(Airplane_type_name),
+ADD FOREIGN KEY (Airport_code) REFERENCES Airport(Airport_code);
+
+ALTER TABLE Owns
+ADD FOREIGN KEY (Property_id) REFERENCES Property(Property_id),
+ADD FOREIGN KEY (Company_id) REFERENCES Company(Company_id);
+
+ALTER TABLE FFC
+ADD FOREIGN KEY (Flight_Number) REFERENCES Flight_leg(Flight_Number),
+ADD FOREIGN KEY (Leg_Number) REFERENCES Flight_leg(Leg_Number),
+ADD FOREIGN KEY (Passaport_no) REFERENCES Customer(Passaport_no),
+ADD FOREIGN KEY (Date) REFERENCES Seat(Date),
+ADD FOREIGN KEY (Seat_Number) REFERENCES Seat(Seat_Number);

@@ -1,0 +1,33 @@
+-- min4 (4) ücreti 300tl den fazla olan ve bursaya inmeyecek olan uçuşlar
+-- SELECT flight_leg.Flight_Number AS Uçuş, fare.Amount AS Ücretler,  airport.Name AS İniş_noktası
+-- FROM airport, flight_leg, flight, fare
+-- WHERE
+-- flight_leg.Flight_Number = flight.Flight_number
+-- AND flight.Flight_number = fare.Flight_Number
+-- AND fare.Amount > 300
+-- AND flight_leg.Arrival_airport_code = airport.Airport_code
+-- AND airport.Name <> 'Bursa Airport';
+
+-- min4 (5) pazartesi olan uçuşların bağlı olduğu şirketler
+-- SELECT company.Company_id AS Şirket, flight.Flight_number AS Uçuş
+-- FROM flight, property, airline, owns, company
+-- WHERE
+-- flight.Airline_id = airline.Property_id
+-- AND airline.Property_id = property.Property_id
+-- AND property.Property_id = owns.Property_id
+-- AND owns.Company_id = company.Company_id
+-- AND flight.Weekdays = 'Pazartesi';
+
+-- min4 (6) müşterilerin uyması gereken kurallar (pasaporta göre sıralı)
+-- SELECT customer.Passaport_no AS Müşteri, fare.Restrictions AS Uyulması_gereken_kısıtlama
+-- FROM customer, seat, leg_instance, flight_leg, flight, fare
+-- WHERE
+-- customer.Passaport_no = seat.Passaport_no
+-- AND seat.Date = leg_instance.Date
+-- AND seat.Leg_Number = leg_instance.Leg_Number
+-- AND seat.Flight_Number = leg_instance.Flight_Number
+-- AND flight_leg.Leg_Number = leg_instance.Leg_Number
+-- AND flight_leg.Flight_Number = leg_instance.Flight_Number
+-- AND flight_leg.Flight_Number = flight.Flight_number
+-- AND fare.Flight_Number = flight.Flight_number
+-- ORDER BY customer.Passaport_no;

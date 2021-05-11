@@ -1,0 +1,32 @@
+-- NESTED Bursa'da bulunan havalimanlarından birine 'Boeing 717' ile uçan uçuşlar
+SELECT Flight_Number, City, Date
+FROM leg_instance, airport
+WHERE 
+leg_instance.Arrival_airport_code = airport.Airport_code
+AND airport.City='Bursa'
+AND leg_instance.Flight_Number IN (
+    SELECT leg_instance.Flight_Number
+    FROM airplane, leg_instance
+    WHERE
+    leg_instance.Airplane_id = airplane.Property_id
+    AND airplane.Airplane_type = 'Boeing 717'
+    );
+
+
+-- 2020 yılının Ağustos ayında uçuş yapan yolcuların ülkeleri
+SELECT Country, COUNT(*) as Customers
+FROM customer 
+WHERE Passaport_no IN
+(SELECT Passaport_no FROM seat WHERE Date>='2020-08-01' AND Date<='2020-08-31')
+GROUP BY Country;
+
+-- Salı günü olan uçuşlardaki en ucuz bilet fiyatı
+SELECT MIN(Amount) FROM fare WHERE Flight_Number IN
+(SELECT Flight_number FROM flight WHERE Weekdays = "Salı");
+
+
+-- Hangi şehirlerde sabah 10dan önce uçuş olduğu
+SELECT City FROM  airport WHERE Airport_code IN
+(SELECT Departure_airport_code
+FROM flight_leg
+WHERE Scheduled_departure_time <= ("10:00"));

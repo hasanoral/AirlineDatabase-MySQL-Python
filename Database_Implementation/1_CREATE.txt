@@ -1,0 +1,127 @@
+CREATE TABLE Airport (
+    Airport_code char(3) NOT NULL,
+    Name varchar(255),
+    City varchar(255),
+    State varchar(255),
+    PRIMARY KEY (Airport_code) 
+);
+
+-- char uçuş kodu değişimi
+CREATE TABLE Flight (
+    Flight_number char(5) NOT NULL,
+    Airline_id int NOT NULL,
+    Weekdays varchar(255) CHECK (Weekdays IN ('Pazartesi','Salı','Çarşamba','Perşembe','Cuma', 
+    'Cumartesi','Pazar')),
+    PRIMARY KEY (Flight_number)
+);
+
+CREATE TABLE Flight_leg (
+    Flight_Number char(5) NOT NULL,
+	Leg_Number int NOT NULL,
+	Mileage int,
+	Departure_airport_code char(3) NOT NULL,
+	Scheduled_departure_time TIME,
+	Arrival_airport_code char(3) NOT NULL,
+	Scheduled_arrival_time TIME,
+    PRIMARY KEY (Leg_number,Flight_number)
+    
+);
+-- check cons.
+CREATE TABLE Leg_instance (
+    Flight_Number char(5) NOT NULL,
+	Leg_Number int NOT NULL,
+	Date DATE NOT NULL,
+	Number_of_available_seats int,
+	Airplane_id int NOT NULL,
+	Departure_airport_code char(3) NOT NULL,
+	Departure_time TIME,
+	Arrival_airport_code char(3) NOT NULL,
+	Arrival_time TIME CHECK (Arrival_time<>Departure_time), -- en uzun uçuş süresi 17 saat 25 dakika olduğu için bu şekilde yaptık.
+    PRIMARY KEY (Date,Leg_number,Flight_number)
+    
+);
+
+CREATE TABLE Fare (
+    Flight_Number char(5) NOT NULL,
+    Fare_code char(1) NOT NULL,
+    Amount INT,
+    Restrictions varchar(255),
+    PRIMARY KEY (Flight_Number,Fare_code)
+);
+
+
+CREATE TABLE Airplane_type (
+    Airplane_type_name varchar(255) NOT NULL,
+	Max_seats int,
+	Manufacturer_company varchar(255),
+    PRIMARY KEY (Airplane_type_name)
+);
+
+CREATE TABLE Can_land (
+    Airplane_type_name varchar(255) NOT NULL,
+	Airport_code char(3) NOT NULL,
+    PRIMARY KEY (Airplane_type_name,Airport_code)
+);
+
+-- check cons.
+CREATE TABLE Airplane (
+    Property_id int NOT NULL,
+	Total_number_of_seats int CHECK (Total_number_of_seats > 0),
+	Airplane_type varchar(255) NOT NULL,
+    PRIMARY KEY (Property_id)
+);
+
+
+-- check cons.
+CREATE TABLE Seat(
+    Seat_Number int NOT NULL,
+    Max_luggage int CHECK (Max_luggage < 35),
+    Passaport_no int NOT NULL,
+    Flight_Number char(5) NOT NULL,
+	Leg_Number int NOT NULL,
+	Date DATE,
+    PRIMARY KEY(Seat_Number,Flight_number,Leg_number,Date)
+	
+);
+
+-- check cons.
+CREATE TABLE Customer(
+    Passaport_no int NOT NULL CHECK (Passaport_no>99999 AND Passaport_no < 999999),
+	Address varchar(255),
+	Country varchar(255),
+	E_mail varchar(255),
+	Phone int,
+    PRIMARY KEY (Passaport_no)
+	
+);
+
+CREATE TABLE Airline(
+    Property_id int NOT NULL,
+    PRIMARY KEY (Property_id)
+);
+
+CREATE TABLE Property(
+    Property_id int NOT NULL,
+    PRIMARY KEY (Property_id)
+    
+);
+
+CREATE TABLE Company(
+    Company_id int NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (Company_id)
+);
+
+CREATE TABLE FFC(
+    Passaport_no int NOT NULL,
+    Flight_number char(5) NOT NULL,
+    Leg_number int NOT NULL,
+    Seat_Number int NOT NULL,
+    Date DATE NOT NULL,
+    PRIMARY KEY(Flight_Number,Seat_Number,Passaport_no,Leg_Number,Date)
+);
+
+CREATE TABLE Owns(
+    Property_id int NOT NULL,
+    Company_id int NOT NULL,
+    PRIMARY KEY (Property_id,Company_id)
+);

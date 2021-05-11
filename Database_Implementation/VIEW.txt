@@ -1,0 +1,42 @@
+CREATE VIEW flight_leg_iniş_bilgileri AS
+SELECT flight_leg.Leg_Number, flight_leg.Flight_Number, airport.Name AS Havalimanı, flight_leg.Scheduled_arrival_time AS Tarih
+FROM flight_leg, airport
+WHERE flight_leg.Arrival_airport_code = airport.Airport_code;
+
+-- ORTALAMA FİYATIN ÜSTÜNDE OLAN BİLETLERİ GÖSTEREN VİEW
+CREATE VIEW amount_Size AS
+    SELECT 
+        Flight_Number,
+        Fare_code,
+        Amount
+    FROM
+        fare
+    WHERE
+        Amount > (
+            SELECT 
+                AVG(Amount)
+            FROM
+                fare)
+    ORDER BY Amount DESC;
+
+--Tamamlanmis uçuslarin bos koltuk sayisi %50den fazla olanlari bulan view
+CREATE VIEW VW_50percent_empty
+AS
+SELECT Flight_Number, Leg_Number, Date, Number_of_available_seats, Total_number_of_seats, CAST(Number_of_available_seats * 100 as float) / CAST(Total_number_of_seats as float) as Rate
+FROM LEG_INSTANCE, AIRPLANE
+WHERE leg_instance.Arrival_time IS NOT NULL
+AND leg_instance.Airplane_id = airplane.Property_id
+AND (CAST(Number_of_available_seats * 100 as float) / CAST(Total_number_of_seats as float) ) > 50;
+
+-- Mevcut uçuşlara ait boş koltuk sayı bilgisi
+CREATE VIEW AvailableSeats
+AS SELECT leg_instance.Flight_Number, leg_instance.Number_of_available_seats, leg_instance.Departure_airport_code, airport.City
+FROM LEG_INSTANCE JOIN AIRPORT ON leg_instance.Departure_airport_code=airport.Airport_code;
+
+CREATE VIEW marmaradaki_havalimanları AS
+    SELECT 
+        Airport_code, Name
+    FROM
+        airport
+    WHERE
+        (airport.State = 'Marmara');

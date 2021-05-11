@@ -1,0 +1,16 @@
+-- telefon numarası 541 ile başlayan müşterilerin seat tablosu
+SELECT DISTINCT * FROM customer
+LEFT JOIN seat ON customer.Passaport_no= seat.Passaport_no
+WHERE Phone LIKE ('541%');
+
+-- fabrikadan çıkmış ama hiçbir airporta iniş izni olmayan airplane tipleri
+SELECT  * from can_land
+RIGHT JOIN airplane_type ON airplane_type.Airplane_type_name = can_land.Airplane_type_name;
+
+-- -- 15:00'ten sonra inecek uçaklardaki toplam koltuk sayısı ve boş koltuk sayısı
+SELECT leg_instance.Flight_Number, airplane.Total_number_of_seats, leg_instance.Number_of_available_seats FROM leg_instance
+LEFT JOIN airplane ON leg_instance.Airplane_id = airplane.Property_id
+UNION
+SELECT leg_instance.Flight_Number, airplane.Total_number_of_seats, leg_instance.Number_of_available_seats FROM leg_instance
+RIGHT JOIN airplane ON leg_instance.Airplane_id = airplane.Property_id
+WHERE (Arrival_time) >= ('15:00');

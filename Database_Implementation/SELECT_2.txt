@@ -1,0 +1,16 @@
+-- min2 (2) uçuşların ortalama tarife ücretleri
+-- SELECT flight.Flight_number AS Uçuş, AVG(fare.Amount) AS Ortalamaücret
+-- FROM flight, fare
+-- WHERE 
+-- flight.Flight_number = fare.Flight_Number
+-- GROUP BY flight.Flight_number
+
+-- SELECT can_land.Airport_code, airplane_type.Max_seats
+-- FROM can_land, airplane_type
+-- WHERE can_land.Airplane_type_name = airplane_type.Airplane_type_name
+-- ORDER BY Max_seats DESC
+
+-- SELECT flight_leg.Scheduled_arrival_time, leg_instance.Arrival_time
+-- FROM flight_leg, leg_instance
+-- WHERE flight_leg.Flight_Number=leg_instance.Flight_Number
+-- AND flight_leg.Leg_Number= leg_instance.Leg_Number

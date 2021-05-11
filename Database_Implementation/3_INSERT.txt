@@ -1,0 +1,226 @@
+-- airport ****************************
+INSERT INTO Airport VALUES ('SBA','Sabiha Gökçen Airport','İstanbul','Marmara');
+INSERT INTO Airport VALUES ('ADB','Adnan Menderes Airport','İzmir','Ege');
+INSERT INTO Airport VALUES ('AYT','Antalya Airport','Antalya','Akdeniz');
+INSERT INTO Airport VALUES ('BLA','Balıkesir Airport','Balıkesir','Marmara');
+INSERT INTO Airport VALUES ('APT','Atatürk Airport','Ankara','İç Anadolu');
+INSERT INTO Airport VALUES ('SAT','Samsun Airport','Samsun','Karadeniz');
+INSERT INTO Airport VALUES ('ERA','Erzurum Airport','Erzurum','Doğu Anadolu');
+INSERT INTO Airport VALUES ('KPT','Kars Airport','Kars','Doğu Anadolu');
+INSERT INTO Airport VALUES ('BDM','Bandırma Airport','Bandırma','Marmara');
+INSERT INTO Airport VALUES ('BRS','Bursa Airport','Bursa','Marmara');
+-- company **************************
+INSERT INTO Company VALUES ('');
+INSERT INTO Company VALUES ('');
+INSERT INTO Company VALUES ('');
+INSERT INTO Company VALUES ('');
+INSERT INTO Company VALUES ('');
+-- property  ********************
+INSERT INTO Property VALUES ('0001');
+INSERT INTO Property VALUES ('0002');
+INSERT INTO Property VALUES ('0003');
+INSERT INTO Property VALUES ('0004');
+INSERT INTO Property VALUES ('0005');
+INSERT INTO Property VALUES ('0006');
+INSERT INTO Property VALUES ('0007');
+INSERT INTO Property VALUES ('0008');
+INSERT INTO Property VALUES ('0009');
+INSERT INTO Property VALUES ('0010');
+INSERT INTO Property VALUES ('0011');
+INSERT INTO Property VALUES ('0012');
+INSERT INTO Property VALUES ('0013');
+INSERT INTO Property VALUES ('0014');
+INSERT INTO Property VALUES ('0015');
+INSERT INTO Property VALUES ('0016');
+INSERT INTO Property VALUES ('0017');
+INSERT INTO Property VALUES ('0018');
+INSERT INTO Property VALUES ('0019');
+INSERT INTO Property VALUES ('0020');
+-- owns **********************
+INSERT INTO Owns VALUES ('0001','001');
+INSERT INTO Owns VALUES ('0002','001');
+INSERT INTO Owns VALUES ('0003','001');
+INSERT INTO Owns VALUES ('0004','001');
+INSERT INTO Owns VALUES ('0005','001');
+INSERT INTO Owns VALUES ('0006','002');
+INSERT INTO Owns VALUES ('0007','002');
+INSERT INTO Owns VALUES ('0008','002');
+INSERT INTO Owns VALUES ('0009','003');
+INSERT INTO Owns VALUES ('0010','003');
+INSERT INTO Owns VALUES ('0011','003');
+INSERT INTO Owns VALUES ('0012','003');
+INSERT INTO Owns VALUES ('0013','003');
+INSERT INTO Owns VALUES ('0014','004');
+INSERT INTO Owns VALUES ('0015','004');
+INSERT INTO Owns VALUES ('0016','004');
+INSERT INTO Owns VALUES ('0017','004');
+INSERT INTO Owns VALUES ('0018','005');
+INSERT INTO Owns VALUES ('0019','005');
+INSERT INTO Owns VALUES ('0020','005');
+-- airplane_type *********************************
+INSERT INTO Airplane_type VALUES ('Airbus A220','130','Airbus Comp.');
+INSERT INTO Airplane_type VALUES ('Airbus A318','132','Airbus Comp.');
+INSERT INTO Airplane_type VALUES ('Boeing 767','181','Boeing Comp.');
+INSERT INTO Airplane_type VALUES ('Boeing 717','106','Boeing Comp.');
+INSERT INTO Airplane_type VALUES ('Douglas DC-2','14','Douglas Aircraft Comp.');
+-- airplane ********************************
+INSERT INTO Airplane VALUES ('001','130','Airbus A220');
+INSERT INTO Airplane VALUES ('002','132','Airbus A318');
+INSERT INTO Airplane VALUES ('003','132','Airbus A318');
+INSERT INTO Airplane VALUES ('004','181','Boeing 767');
+INSERT INTO Airplane VALUES ('005','181','Boeing 767');
+INSERT INTO Airplane VALUES ('006','106','Boeing 717');
+INSERT INTO Airplane VALUES ('007','106','Boeing 717');
+INSERT INTO Airplane VALUES ('008','106','Boeing 717');
+INSERT INTO Airplane VALUES ('009','106','Boeing 717');
+INSERT INTO Airplane VALUES ('010','14','Douglas DC-2');
+-- airline **********************************
+INSERT INTO Airline VALUES ('0011');
+INSERT INTO Airline VALUES ('0012');
+INSERT INTO Airline VALUES ('0013');
+INSERT INTO Airline VALUES ('0014');
+INSERT INTO Airline VALUES ('0015');
+INSERT INTO Airline VALUES ('0016');
+INSERT INTO Airline VALUES ('0017');
+INSERT INTO Airline VALUES ('0018');
+INSERT INTO Airline VALUES ('0019');
+INSERT INTO Airline VALUES ('0020');
+-- flight  **********************************
+INSERT INTO Flight VALUES ('D753S','0011','Pazartesi');
+INSERT INTO Flight VALUES ('BR65L','0012','Pazartesi');
+INSERT INTO Flight VALUES ('HX3K5','0013','Salı');
+INSERT INTO Flight VALUES ('W39S5','0014','Pazar');
+INSERT INTO Flight VALUES ('I34B7','0015','Perşembe');
+INSERT INTO Flight VALUES ('BL10B','0016','Çarşamba');
+INSERT INTO Flight VALUES ('ER88Z','0017','Cumartesi');
+INSERT INTO Flight VALUES ('AB60K','0018','Cumartesi');
+INSERT INTO Flight VALUES ('NR73A','0019','Salı');
+INSERT INTO Flight VALUES ('MS57T','0020','Pazar');
+-- fare *
+INSERT INTO Fare VALUES ('D753S','J','999','required to wear masks');
+INSERT INTO Fare VALUES ('BR65L','F','1299','must complete the passenger information form');
+INSERT INTO Fare VALUES ('HX3K5','J','899','must complete the passenger information form');
+INSERT INTO Fare VALUES ('W39S5','Y','205','required to wear masks');
+INSERT INTO Fare VALUES ('I34B7','F','1400','must complete the passenger information form');
+INSERT INTO Fare VALUES ('BL10B','J','789','must complete the passenger information form');
+INSERT INTO Fare VALUES ('ER88Z','J','665','required to wear masks');
+INSERT INTO Fare VALUES ('AB60K','Y','299','must complete the passenger information form');
+INSERT INTO Fare VALUES ('NR73A','Y','350','required to wear masks');
+INSERT INTO Fare VALUES ('MS57T','W','455','must complete the passenger information form');
+INSERT INTO Fare VALUES ('D753S','W','589','required to wear masks');
+INSERT INTO Fare VALUES ('BR65L','J','800','must complete the passenger information form');
+INSERT INTO Fare VALUES ('HX3K5','F','1300','must complete the passenger information form');
+
+-- can_land ****************************
+INSERT INTO Can_land VALUES ('Airbus A220','SBA');
+INSERT INTO Can_land VALUES ('Airbus A220','ADB');
+INSERT INTO Can_land VALUES ('Airbus A220','BLA');
+INSERT INTO Can_land VALUES ('Airbus A220','SAT');
+INSERT INTO Can_land VALUES ('Airbus A220','ERA');
+INSERT INTO Can_land VALUES ('Airbus A220','KPT');
+INSERT INTO Can_land VALUES ('Airbus A220','BDM');
+INSERT INTO Can_land VALUES ('Airbus A220','BRS');
+INSERT INTO Can_land VALUES ('Airbus A318','ADB');
+INSERT INTO Can_land VALUES ('Airbus A318','AYT');
+INSERT INTO Can_land VALUES ('Airbus A318','BLA');
+INSERT INTO Can_land VALUES ('Airbus A318','APT');
+INSERT INTO Can_land VALUES ('Airbus A318','ERA');
+INSERT INTO Can_land VALUES ('Airbus A318','BDM');
+INSERT INTO Can_land VALUES ('Boeing 767','SBA');
+INSERT INTO Can_land VALUES ('Boeing 767','AYT');
+INSERT INTO Can_land VALUES ('Boeing 767','APT');
+INSERT INTO Can_land VALUES ('Boeing 767','ERA');
+INSERT INTO Can_land VALUES ('Boeing 767','BDM');
+INSERT INTO Can_land VALUES ('Boeing 717','SBA');
+INSERT INTO Can_land VALUES ('Boeing 717','ADB');
+INSERT INTO Can_land VALUES ('Boeing 717','AYT');
+INSERT INTO Can_land VALUES ('Boeing 717','SAT');
+INSERT INTO Can_land VALUES ('Boeing 717','ERA');
+INSERT INTO Can_land VALUES ('Boeing 717','KPT');
+INSERT INTO Can_land VALUES ('Douglas DC-2','BRS');
+
+-- customer **************************************
+INSERT INTO Customer VALUES ('878954','Urla/İzmir','Turkey','hasan7635.ho@gmail.com','541563488');
+INSERT INTO Customer VALUES ('789456','Bornova/İzmir','Turkey','egemenbursali16@gmail.com','541866779');
+INSERT INTO Customer VALUES ('159753','Mudanya/Bursa','Turkey','databaseproject@gmail.com','543866489');
+INSERT INTO Customer VALUES ('456852','Bandırma/Balıkesir','Turkey','makifkonur@gmail.com','541786489');
+INSERT INTO Customer VALUES ('963258','London','United Kingdom','crispin704@gmail.com','541866449');
+INSERT INTO Customer VALUES ('741258','Muratpaşa/Antalya','Turkey','selen07@gmail.com','541866539');
+INSERT INTO Customer VALUES ('268459','Keçiören/Ankara','Turkey','keciorengucu06@gmail.com','544894889');
+INSERT INTO Customer VALUES ('486213','South California','United States','wess798645@gmail.com','545664889');
+INSERT INTO Customer VALUES ('988655','Kadıköy/İstanbul','Turkey','projectxxx@gmail.com','5469124889');
+INSERT INTO Customer VALUES ('145632','Çeşme/İzmir','Turkey','cafeege35@gmail.com','535664889');
+
+-- flight_leg  ***************************************************
+INSERT INTO flight_leg VALUES('D753S','1','451','SAT','14:30','BLA','16:30');
+INSERT INTO flight_leg VALUES('NR73A','1','773','ERA','15:30','AYT','19:30');
+INSERT INTO flight_leg VALUES('AB60K','1','201','BRS','08:30','APT','09:30');
+INSERT INTO flight_leg VALUES('HX3K5','1','863','KPT','09:30','ADB','13:30');
+INSERT INTO flight_leg VALUES('I34B7','1','120','SBA','22:30','BLA','23:00');
+INSERT INTO flight_leg VALUES('BL10B','1','72','BLA','08:30','BRS','10:30');
+INSERT INTO flight_leg VALUES('BR65L','1','72','BRS','12:00','BLA','13:00');
+INSERT INTO flight_leg VALUES('W39S5','1','427','AYT','14:10','SAT','15:45');
+INSERT INTO flight_leg VALUES('MS57T','1','427','SAT','23:55','AYT','01:30');
+INSERT INTO flight_leg VALUES('ER88Z','1','651','ERA','07:00','SBA','13:00');
+INSERT INTO flight_leg VALUES('NR73A','2','450','AYT','20:00','BLA','22:30');
+INSERT INTO flight_leg VALUES('AB60K','2','200','APT','10:00','KPT','11:15');
+INSERT INTO flight_leg VALUES('W39S5','2','120','SAT','20:00','BRS','22:30');
+INSERT INTO flight_leg VALUES('BR65L','2','90','BLA','20:00','AYT','22:30');
+-- leg_instance ******************************
+-- date'li yeni leg instance
+INSERT INTO Leg_instance VALUES ('D753S','1','2021-1-25','130','005','SAT','14:30','BLA','16:30');
+INSERT INTO Leg_instance VALUES ('I34B7','1','2020-10-10','100','002','SBA','22:30','BLA','23:00');
+INSERT INTO Leg_instance VALUES ('ER88Z','1','2020-8-2','25','001','ERA','07:00','SBA','13:00');
+INSERT INTO Leg_instance VALUES ('D753S','1','2021-2-18','10','003','SAT','14:30','BLA','16:30');
+INSERT INTO Leg_instance VALUES ('BR65L','1','2020-7-15','5','007','BLA','12:00','AYT','13:00');
+INSERT INTO Leg_instance VALUES ('NR73A','1','2020-6-20','90','008','ERA','15:30','AYT','19:30');
+INSERT INTO Leg_instance VALUES ('MS57T','1','2020-3-26','8','0010','SAT','23:55','AYT','01:30');
+INSERT INTO Leg_instance VALUES ('BL10B','1','2020-5-7','30','009','BLA','08:30','BRS','10:30');
+INSERT INTO Leg_instance VALUES ('BL10B','1','2020-4-23','50','008','BLA','08:30','BRS','10:30');
+INSERT INTO Leg_instance VALUES ('W39S5','1','2020-12-8','2','0010','AYT','14:10','SAT','15:45');
+INSERT INTO Leg_instance VALUES ('BR65L','2','2020-11-15','5','007','BLA','20:00','AYT','22:30');
+-- date'li seat
+-- seat ****************
+INSERT INTO Seat VALUES ('001','20','878954','D753S','1','2021-1-25');
+INSERT INTO Seat VALUES ('002','20','789456','D753S','1','2021-1-25');
+INSERT INTO Seat VALUES ('058','20','159753','D753S','1','2021-1-25');
+INSERT INTO Seat VALUES ('065','20','456852','D753S','1','2021-1-25');
+INSERT INTO Seat VALUES ('073','20','963258','D753S','1','2021-1-25');
+
+INSERT INTO Seat VALUES ('011','20','159753','I34B7','1','2020-10-10');
+INSERT INTO Seat VALUES ('012','20','456852','I34B7','1','2020-10-10');
+INSERT INTO Seat VALUES ('045','20','741258','I34B7','1','2020-10-10');
+INSERT INTO Seat VALUES ('046','20','268459','I34B7','1','2020-10-10');
+INSERT INTO Seat VALUES ('047','20','486213','I34B7','1','2020-10-10');
+INSERT INTO Seat VALUES ('048','20','988655','I34B7','1','2020-10-10');
+INSERT INTO Seat VALUES ('050','20','145632','I34B7','1','2020-10-10');
+
+INSERT INTO Seat VALUES ('002','20','878954','ER88Z','1','2020-8-2');
+INSERT INTO Seat VALUES ('010','20','789456','ER88Z','1','2020-8-2');
+INSERT INTO Seat VALUES ('014','20','456852','ER88Z','1','2020-8-2');
+INSERT INTO Seat VALUES ('020','20','741258','ER88Z','1','2020-8-2');
+INSERT INTO Seat VALUES ('025','20','268459','ER88Z','1','2020-8-2');
+INSERT INTO Seat VALUES ('029','20','988655','ER88Z','1','2020-8-2');
+
+INSERT INTO Seat VALUES ('045','20','988655','D753S','1','2021-2-18');
+INSERT INTO Seat VALUES ('080','20','268459','D753S','1','2021-2-18');
+INSERT INTO Seat VALUES ('084','20','963258','D753S','1','2021-2-18');
+INSERT INTO Seat VALUES ('090','20','159753','D753S','1','2021-2-18');
+
+INSERT INTO Seat VALUES ('015','20','456852','BR65L','1','2020-7-15');
+INSERT INTO Seat VALUES ('016','20','159753','BR65L','1','2020-7-15');
+INSERT INTO Seat VALUES ('022','20','789456','BR65L','1','2020-7-15');
+INSERT INTO Seat VALUES ('023','20','878954','BR65L','1','2020-7-15');
+INSERT INTO Seat VALUES ('034','20','963258','BR65L','1','2020-7-15');
+INSERT INTO Seat VALUES ('035','20','741258','BR65L','1','2020-7-15');
+
+INSERT INTO Seat VALUES ('001','20','741258','BR65L','2','2020-11-15');
+INSERT INTO Seat VALUES ('002','20','963258','BR65L','2','2020-11-15');
+
+-- yeni ffc için insertlerrr
+-- **********************************
+INSERT INTO ffc VALUES ('878954','D753S','1','1','2021-1-25');
+INSERT INTO ffc VALUES ('878954','ER88Z','1','2','2020-8-2');
+INSERT INTO ffc VALUES ('159753','I34B7','1','11','2020-10-10');
+INSERT INTO ffc VALUES ('789456','BR65L','1','22','2020-7-15');
+INSERT INTO ffc VALUES ('268459','I34B7','1','46','2020-10-10');
